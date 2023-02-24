@@ -10,7 +10,7 @@ using namespace std;
 const string name = "Rudzeris: ";
 const string gameName = "Виселица: ";
 
-vector<string>* words(vector<string>* wordList) {
+vector<string>* words(vector<string>* wordList) { // Собирает информацию из файла и добавляет в вектор
     ifstream file;
     char* fileName = new char[15];
     fileName = (char*)"words.txt";
@@ -39,7 +39,7 @@ vector<string>* words(vector<string>* wordList) {
     return wordList;
 }
 
-string search(string y,string x,char w) {
+string search(string y,string x,char w) { // Поиск и открытие нужных букв
     unsigned short q = 0;
     for (unsigned short i = 0; i < y.length(); i++)
     {
@@ -62,7 +62,7 @@ string search(string y,string x,char w) {
     return x;
 }
 
-char* replay(char y,unsigned short x) {
+char* replay(char y,unsigned short x) { // Повторить в выводе '-' несколько раз
     x++;
     char* q;
     q = new char[x+2];
@@ -75,13 +75,13 @@ char* replay(char y,unsigned short x) {
     return q;
 }
 
-void vectorshow(vector<string> list) {
+void vectorshow(vector<string> list) { // Вывод вектора (только для админа)
     cout << name << "\"\n\\*\nВ файле такие слова: ";
     for (unsigned short i = 0; i < list.size(); i++)
         cout << list[i] << ((i<list.size()-1)?(", "):("\n*\\"));
 }
 
-void game(string y) {
+void game(string y) { // Сама игра, которая повторяет ввод и проверку
     cout << gameName << "\"Игра началась!\"\n\n";
     cout << gameName << "\"Дано слово, оно состоит из " << y.length() << " букв:\"";
     string x=y;
@@ -105,7 +105,7 @@ int main()
     char buffer[256]; // буфер
     DWORD size; // размер
     size = sizeof(buffer); // размер буфера
-    GetComputerNameA(buffer, &size);
+    GetComputerNameA(buffer, &size); // Берем имя компьютера
     string userName = buffer;
     string Admin = "RUDZERIS";
     srand(time(NULL));
